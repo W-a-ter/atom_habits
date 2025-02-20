@@ -8,6 +8,7 @@ from users.permissions import IsOwner
 
 class HabitViewSet(ModelViewSet):
     """Реализация представления привычек через ViewSet (полный crud)"""
+
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
     permission_classes = (IsOwner,)
@@ -21,5 +22,6 @@ class HabitViewSet(ModelViewSet):
 
 class PublishHabitAPIView(ListAPIView):
     """Реализация просмотра публичных привычек через ListAPIView."""
+
     serializer_class = PublishHabitSerializer
     queryset = Habit.objects.filter(sign_public=True)

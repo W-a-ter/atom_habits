@@ -9,14 +9,11 @@ class HabitSerializer(ModelSerializer):
 
     class Meta:
         model = Habit
-        exclude = ('user',)
+        exclude = ("user",)
         validators = [
-            GoodHabitValidator(
-                good_habit='good_habit',
-                prize='prize'
-            ),
-            DeadlineValidator(deadline='deadline'),
-            ConnectedHabitValidator(connected_habit='connected_habit')
+            GoodHabitValidator(good_habit="good_habit", prize="prize"),
+            DeadlineValidator(deadline="deadline"),
+            ConnectedHabitValidator(connected_habit="connected_habit"),
         ]
 
 

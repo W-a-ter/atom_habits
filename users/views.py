@@ -7,6 +7,7 @@ from users.serializers import UserSerializer
 
 class UserCreateAPIView(CreateAPIView):
     """Реализация представления регистрации пользователя, через CreateAPIView."""
+
     serializer_class = UserSerializer
     queryset = CustomUser.objects.all()
     permission_classes = [AllowAny]
@@ -14,12 +15,13 @@ class UserCreateAPIView(CreateAPIView):
     def perform_create(self, serializer):
         """Хэшируем пароль при создании пользователя."""
         user = serializer.save(is_active=True)
-        user.set_password(serializer.validated_data['password'])
+        user.set_password(serializer.validated_data["password"])
         user.save()
 
 
 class UserRetrieveAPIView(RetrieveAPIView):
     """Реализация представления просмотра пользователя, через RetrieveAPIView."""
+
     serializer_class = UserSerializer
     queryset = CustomUser.objects.all()
     permission_classes = [IsAuthenticated]

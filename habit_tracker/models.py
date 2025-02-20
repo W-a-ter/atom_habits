@@ -10,7 +10,9 @@ class Habit(models.Model):
     time = models.DateTimeField(verbose_name="время выполнения привычки", null=True, blank=True)
     action = models.TextField(verbose_name="действие", null=True, blank=True)
     good_habit = models.BooleanField(verbose_name="признак приятной привычки", null=True, blank=True)
-    connected_habit = models.ForeignKey('habit_tracker.Habit', on_delete=models.CASCADE, verbose_name="связанная привычка", null=True, blank=True)
+    connected_habit = models.ForeignKey(
+        "habit_tracker.Habit", on_delete=models.CASCADE, verbose_name="связанная привычка", null=True, blank=True
+    )
     period = models.PositiveIntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)], default=1)
     prize = models.TextField(verbose_name="Приз", null=True, blank=True)
     deadline = models.PositiveIntegerField(verbose_name="время на выполнение", null=True, blank=True)

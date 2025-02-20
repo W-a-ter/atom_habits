@@ -10,7 +10,7 @@ class GoodHabitValidator:
         good_habit = dict(value).get(self.good_habit)
         prize = dict(value).get(self.prize)
         if good_habit and prize is not None:
-            raise ValidationError('Одновременно нельзя указать приятную привычку и вознаграждение')
+            raise ValidationError("Одновременно нельзя указать приятную привычку и вознаграждение")
 
 
 class DeadlineValidator:
@@ -20,7 +20,7 @@ class DeadlineValidator:
     def __call__(self, value):
         deadline = dict(value).get(self.deadline)
         if int(deadline) > 120:
-            raise ValidationError('Время выполнения не может быть больше 120')
+            raise ValidationError("Время выполнения не может быть больше 120")
 
 
 class ConnectedHabitValidator:
@@ -30,6 +30,4 @@ class ConnectedHabitValidator:
     def __call__(self, value):
         connected_habit = dict(value).get(self.connected_habit)
         if connected_habit and connected_habit.good_habit is False:
-            raise ValidationError('Может быть только приятная привычка')
-
-
+            raise ValidationError("Может быть только приятная привычка")

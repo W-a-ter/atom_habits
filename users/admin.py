@@ -16,4 +16,8 @@ class UserAdmin(admin.ModelAdmin):
         "username",
         "tg_chat_id",
     )
-    search_fields = ("id", "username", "tg_chat_id",)
+    search_fields = (
+        "id",
+        "username",
+        "tg_chat_id",
+    )
