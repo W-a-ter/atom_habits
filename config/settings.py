@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'habit_tracker',
-    # "django_filters",  # required for serving swagger ui's css/js files
-    # "drf_yasg",
-    # "django_celery_beat",
+    'users',
+    "django_filters",  # required for serving swagger ui's css/js files
+    "drf_yasg",
+    #"django_celery_beat",
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,11 +140,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-REST_FRAMEWORK = {
-    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
-    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-}
+# REST_FRAMEWORK = {
+#      "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+#      "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+#      "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+#  }
 
 
 SIMPLE_JWT = {
@@ -150,17 +152,7 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
-AUTH_USER_MODEL = "users.User"
-
-
-EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
-EMAIL_HOST = os.getenv("EMAIL_HOST")
-EMAIL_PORT = os.getenv("EMAIL_PORT")
-EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", False) == "True"
-EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", False) == "True"
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+AUTH_USER_MODEL = "users.CustomUser"
 
 
 # Настройки для Celery
@@ -186,4 +178,7 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": timedelta(minutes=10),  # Расписание выполнения задачи (например, каждые 10 минут)
     },
 }
+
+API_TOKEN_TELEGRAM = os.getenv("API_TOKEN_TELEGRAM")
+TELEGRAM_URL = os.getenv("TELEGRAM_URL")
 
