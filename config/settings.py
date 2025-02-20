@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "drf_yasg",
     #"django_celery_beat",
     'rest_framework',
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -182,3 +186,14 @@ CELERY_BEAT_SCHEDULE = {
 API_TOKEN_TELEGRAM = os.getenv("API_TOKEN_TELEGRAM")
 TELEGRAM_URL = os.getenv("TELEGRAM_URL")
 
+
+CORS_ALLOWED_ORIGINS = [
+    '<http://localhost:8000>',  # Замените на адрес вашего фронтенд-сервера
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com", #  Замените на адрес вашего фронтенд-сервера
+    # и добавьте адрес бэкенд-сервера
+]
+
+CORS_ALLOW_ALL_ORIGINS = False
