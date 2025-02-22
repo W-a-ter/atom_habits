@@ -10,7 +10,7 @@ def send_habit_for_user():
     """Функция отправки привычек для пользователей в телеграм"""
 
     date_now = timezone.now().date()
-    all_a_habit = Habit.objects.filter(sign_pleasant_habit=False)
+    all_a_habit = Habit.objects.filter(good_habit=False)
     all_habit_now = [habit for habit in all_a_habit if habit.time.date() == date_now]
 
     for habit in all_habit_now:

@@ -187,11 +187,12 @@ TELEGRAM_URL = os.getenv("TELEGRAM_URL")
 
 
 CORS_ALLOWED_ORIGINS = [
-    "<http://localhost:8000>",  # Замените на адрес вашего фронтенд-сервера
+    'http://localhost:8000',
+    'https://read-and-write.example.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://read-and-write.example.com",  #  Замените на адрес вашего фронтенд-сервера и добавьте адрес бэкенд-сервера
+    'https://read-and-write.example.com',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False

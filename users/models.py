@@ -1,24 +1,17 @@
-# Create your models here.
 from django.contrib.auth.models import AbstractUser
-
-# Create your models here.
 from django.db import models
 
 
 class CustomUser(AbstractUser):
-    email = models.EmailField(unique=True)
-    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
-    country = models.CharField(max_length=100, blank=True, null=True)
-    phone_number = models.CharField(max_length=15, blank=True, null=True)
-    username = None
+    username = models.CharField(max_length=255, unique=True, verbose_name='Имя пользователя', default=0)
+    tg_chat_id = models.CharField(max_length=50, unique=True, verbose_name='Телеграм чат-id', default=0)
 
-    USERNAME_FIELD = "email"
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.email
+        return f"{self.username}"
 
     class Meta:
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
-        permissions = [("can_ban_user", "can ban user"), ("can_stop_mailing", "can stop mailing")]
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'

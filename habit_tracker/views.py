@@ -24,4 +24,4 @@ class PublishHabitAPIView(ListAPIView):
     """Реализация просмотра публичных привычек через ListAPIView."""
 
     serializer_class = PublishHabitSerializer
-    queryset = Habit.objects.filter(sign_public=True)
+    queryset = Habit.objects.filter(privacy=True)
